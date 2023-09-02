@@ -41,7 +41,6 @@ export default function LoginForm() {
         iat: number;
         exp: number;
       } = jwtDecode(token);
-      console.log(exp);
       localStorage.setItem("token", token);
       localStorage.setItem("exp", `${exp?.exp}`);
 
@@ -49,7 +48,6 @@ export default function LoginForm() {
 
       navigate("/");
     } catch (e) {
-      console.log(e);
       setLoading(false);
     }
   };

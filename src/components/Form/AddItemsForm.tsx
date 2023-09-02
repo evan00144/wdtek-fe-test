@@ -28,7 +28,7 @@ export default function AddItemsForm() {
     } catch (e) {
       console.log(e);
     } finally {
-      navigate('/success');
+      navigate("/success");
     }
   };
 
@@ -56,7 +56,6 @@ export default function AddItemsForm() {
     })();
     setIsValid(false);
   };
-  console.log(dataSubmitted);
   useEffect(() => {
     getCategories();
   }, []);

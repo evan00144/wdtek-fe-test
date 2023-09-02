@@ -3,12 +3,12 @@ import { Button, Container } from "react-bootstrap";
 import axios from "axios";
 import Itemlist from "../page-components/Itemlist";
 import PaginationComponent from "../components/Pagination/PaginationComponent";
-import {  iItems, iPagination } from "../interface";
+import { iItems, iPagination } from "../interface";
 import { useNavigate } from "react-router-dom";
 
 export default function ItemsPage() {
   const [items, setItems] = useState<iItems[]>();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [pagination, setPagination] = useState<iPagination>({
     page: 1,
     pageSize: 5,
@@ -42,7 +42,7 @@ export default function ItemsPage() {
     getItems();
   }, [getItems]);
   const handleAddItems = () => {
-    navigate('/add-item')
+    navigate("/add-item");
   };
 
   const handlePageChange = (pageNumber: number) => {
