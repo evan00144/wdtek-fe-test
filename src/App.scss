@@ -135,3 +135,11 @@ tbody {
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+.success-page{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

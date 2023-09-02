@@ -1,17 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
-import ModalForm from "../components/ModalForm";
 import { Button, Container } from "react-bootstrap";
-import AddItemsForm from "../components/Form/AddItemsForm";
 import axios from "axios";
 import Itemlist from "../page-components/Itemlist";
 import PaginationComponent from "../components/Pagination/PaginationComponent";
-import { ModalProps, iItems, iPagination } from "../interface";
+import {  iItems, iPagination } from "../interface";
+import { useNavigate } from "react-router-dom";
 
 export default function ItemsPage() {
-  axios.defaults.headers.common["Authorization"] = `${localStorage.getItem(
-    "token"
-  )}`;
   const [items, setItems] = useState<iItems[]>();
+  const navigate = useNavigate()
   const [pagination, setPagination] = useState<iPagination>({
     page: 1,
     pageSize: 5,
@@ -20,9 +17,6 @@ export default function ItemsPage() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [modal, setModal] = useState<ModalProps>({
-    show: false,
-  });
 
   const getItems = useCallback(async () => {
     try {
@@ -47,37 +41,10 @@ export default function ItemsPage() {
   useEffect(() => {
     getItems();
   }, [getItems]);
-
-  const callbackAddForm = (callback: boolean) => {
-    if (callback) {
-      getItems();
-      setModal((prev) => {
-        return {
-          ...prev,
-          show: false,
-        };
-      });
-    }
-  };
-
   const handleAddItems = () => {
-    setModal((prev) => {
-      return {
-        ...prev,
-        show: true,
-      };
-    });
+    navigate('/add-item')
   };
 
-
-  const handleCancel = () => {
-    setModal((prev) => {
-      return {
-        ...prev,
-        show: false,
-      };
-    });
-  };
   const handlePageChange = (pageNumber: number) => {
     setPagination((prev) => {
       return {
@@ -103,9 +70,6 @@ export default function ItemsPage() {
         pagination={pagination}
         handlePageChange={handlePageChange}
       />
-      <ModalForm modalProps={modal}>
-        <AddItemsForm handleCancel={handleCancel} callback={callbackAddForm} />
-      </ModalForm>
     </Container>
   );
 }

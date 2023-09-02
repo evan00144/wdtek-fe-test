@@ -53,6 +53,6 @@ export interface iCategories {
 }
 
 export interface iForm {
-  callback: (boolean: boolean) => void;
-  handleCancel : ()=>void
+  callback?: (boolean: boolean) => void;
+  handleCancel ?: ()=>void
 }
