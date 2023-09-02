@@ -1,0 +1,137 @@
+@use "sass:math";
+
+// scss-docs-start color-variables
+$blue: #2e78a4 !default;
+$indigo: #40d3a2 !default;
+$purple: #6f42c1 !default;
+$pink: #d63384 !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #198754 !default;
+$teal: #20c997 !default;
+$cyan: #0dcaf0 !default;
+// scss-docs-end color-variables
+// scss-docs-start theme-color-variables
+$primary: $blue !default;
+$secondary: $indigo !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+// scss-docs-end theme-color-variables
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+) !default;
+@import "bootstrap/scss/bootstrap";
+
+* {
+  font-family: "Lexend", sans-serif;
+  color: #394855;
+}
+
+.form-control,
+.form-select {
+  border-radius: 30rem;
+  padding: 1.2rem 2rem;
+  background-color: rgba(245, 253, 255, 1);
+  margin-bottom: 1rem;
+  border-color: transparent;
+  &::placeholder {
+    color: rgba(57, 72, 85, 0.5);
+  }
+  &:focus {
+    box-shadow: none;
+    border-color: rgb(204, 241, 250);
+    background-color: rgb(227, 248, 253);
+  }
+}
+.form-control[type="date"] {
+  color: rgba(57, 72, 85, 0.5);
+}
+.form-select {
+  color: rgba(57, 72, 85, 0.5);
+  background-position: right 2rem center;
+}
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 30rem;
+}
+
+.table {
+  border-radius: 0.5rem;
+  box-shadow: 2px 3px 83px -16px rgba(163, 163, 163, 0.75);
+}
+th,
+td,
+tr {
+  height: auto;
+  border: 0;
+}
+
+th,
+td {
+  padding: 1rem 2rem !important;
+}
+
+td {
+  color: #394855 !important;
+}
+thead {
+  th,
+  tr {
+    background-color: $primary !important;
+    color: white !important;
+  }
+  th {
+    &:first-child {
+      border-top-left-radius: 0.5rem;
+    }
+    &:last-child {
+      border-top-right-radius: 0.5rem;
+    }
+  }
+}
+tbody {
+  tr {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    &:last-child {
+      td {
+        &:first-child {
+          border-bottom-left-radius: 0.5rem;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: white !important;
+  --bs-table-bg-type: white;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) > * {
+  background-color: rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.modal-content {
+  padding: 1rem 2rem;
+}
+
+.label-title {
+  color: rgba(57, 72, 85, 0.5);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
